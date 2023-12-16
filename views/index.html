@@ -5,6 +5,7 @@
     <title>The Weather Why?</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -15,38 +16,14 @@
     <hr>
 
     <h2>INMET: Instituto Nascional de Meteorologia</h2>
-    <ul>
-        <li>
-            <span>Temperatura:</span>
-            <span>20°</span>
-        </li>
-        <li>
-            <span>Chuva:</span>
-            <span>69%</span>
-        </li>
-    </ul>
+    {{ template "weather" .Data }}
+
     <h2>Climatempo</h2>
-    <ul>
-        <li>
-            <span>Temperatura:</span>
-            <span>20°</span>
-        </li>
-        <li>
-            <span>Chuva:</span>
-            <span>69%</span>
-        </li>
-    </ul>
+    {{ template "weather" .Data }}
+
     <h2>The Weather channel</h2>
-    <ul>
-        <li>
-            <span>Temperatura:</span>
-            <span>20°</span>
-        </li>
-        <li>
-            <span>Chuva:</span>
-            <span>69%</span>
-        </li>
-    </ul>
+    {{ template "weather" .Data }}
+
 </body>
 
 </html>

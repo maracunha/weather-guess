@@ -1,0 +1,12 @@
+{{ block "weather" . }}
+<ul>
+    <li>
+        <span>Temperatura:</span>
+        <span>{{ .Temperature}} </span>
+    </li>
+    <li>
+        <span>Chuva:</span>
+        <span>{{ .Rain }}</span>
+    </li>
+</ul>
+{{ end }}

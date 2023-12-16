@@ -48,6 +48,7 @@ func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Con
 func main() {
     e := echo.New()
     e.Use(middleware.Logger())
+
     e.Renderer = newTemplate()
     e.Static("/css", "css")
 
