@@ -11,19 +11,15 @@
 
 <body>
     <h1>E aí, vai chover?</h1>
-    <label for="city">Cidade: <input type="text"></label>
-    <button>que só ver</button>
+
+    <form id="city-form" hx-post="/city" hx-target="#oob-display">
+        <label for="city">Cidade:</label>
+        <input type="text" name="city" placeholder="Cidade">
+        <button type="submit">que só ver</button>
+    </form>
+
     <hr>
 
-    <h2>INMET: Instituto Nascional de Meteorologia</h2>
-    {{ template "weather" .Data }}
-
-    <h2>Climatempo</h2>
-    {{ template "weather" .Data }}
-
-    <h2>The Weather channel</h2>
-    {{ template "weather" .Data }}
-
+    <main id="oob-display"></main>
 </body>
-
 </html>

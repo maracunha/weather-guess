@@ -2,7 +2,7 @@ package main
 
 import (
 	"io"
-	"text/template"
+	"html/template"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -17,8 +17,13 @@ type Weather struct {
     Rain int
 }
 
-type WeatherData struct {
-    Data Weather
+type PageData struct {
+    Weather Weather
+    City string
+}
+
+type City struct {
+    City string
 }
 
 func NewData() *Weather {
@@ -28,12 +33,18 @@ func NewData() *Weather {
     }
 }
 
-func NewWeatherData(data Weather) WeatherData {
-    return WeatherData{
-        Data: data,
+func NewCity() *City {
+    return &City{
+        City: "bla",
     }
 }
 
+func NewWeatherData(data Weather, city string) PageData {
+    return PageData{
+        Weather: data,
+        City: city,
+    }
+}
 
 func newTemplate() *Template {
     return &Template{
@@ -53,9 +64,16 @@ func main() {
     e.Static("/css", "css")
 
     data := NewData()
+    city := ""
 
     e.GET("/", func(c echo.Context) error {
-        return c.Render(200, "index.html", NewWeatherData(*data))
+        return c.Render(200, "index.html", nil)
+    })
+
+    e.POST("city", func(c echo.Context) error {
+        city = c.FormValue("city")
+
+        return c.Render(200, "oob-display", NewWeatherData(*data, city))
     })
 
     e.Logger.Fatal(e.Start(":42069"))

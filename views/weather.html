@@ -10,3 +10,15 @@
     </li>
 </ul>
 {{ end }}
+
+{{ block "oob-display" . }}
+    <h2>INMET: Instituto Nascional de Meteorologia</h2>
+    {{ .City }}
+    {{ template "weather" .Weather }}
+
+    <h2>Climatempo</h2>
+    {{ template "weather" .Weather }}
+
+    <h2>The Weather channel</h2>
+    {{ template "weather" .Weather }}
+{{ end }}
